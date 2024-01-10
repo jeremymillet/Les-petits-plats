@@ -1,6 +1,8 @@
 function cardTemplate(data) {
+    
     const { id, name, servings, time, description, appliance, ingredients, ustensils, image } = data
     const picture = `./assets/images/${image}`;
+
     function getCardDom() {
         const cardsContainer= document.querySelector(".cards-container");
         const article = document.createElement("article");
