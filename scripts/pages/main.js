@@ -8,12 +8,18 @@ export function displayMedia(recipes) {
     cardsContainer.appendChild(cardDom);
   });
 }
+
+async function displayNbRecipes(recipes) {
+  const nbRecipes = document.querySelector(".nb-recipes")
+  nbRecipes.innerText = recipes.length  +" recettes"
+}
 async function displayData(recipes) {
   displayMedia(recipes);
 }
 
 async function init() {
   // Récupère les datas des photographes
+  displayNbRecipes(recipes);
   displayData(recipes);
 }
 

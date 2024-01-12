@@ -4,12 +4,16 @@ function cardTemplate(data) {
     const picture = `./assets/images/${image}`;
 
     function getCardDom() {
-        const cardsContainer= document.querySelector(".cards-container");
+        const cardsContainer = document.querySelector(".cards-container");
         const article = document.createElement("article");
+        article.classList.add("card");
         const imgContainer = document.createElement("div");
+        imgContainer.classList.add("card-image-container");
         const textContainer = document.createElement("div");
+        textContainer.classList.add("card-text-container");
         const timeRecipe = document.createElement("p");
-        timeRecipe.textContent = time;
+        timeRecipe.classList.add("card-time");
+        timeRecipe.textContent = time + "min";
 
         const img = document.createElement("img");
         img.setAttribute("src",picture)
@@ -18,24 +22,40 @@ function cardTemplate(data) {
         title.textContent = name
 
         const labelRecipe = document.createElement("label")
+        labelRecipe.classList.add("label-recipe")
         labelRecipe.textContent = "Recette"
 
         const textRecipe = document.createElement("p");
         textRecipe.textContent = description
+        textRecipe.classList.add("recipe-description")
 
         const ingredientsContainer = document.createElement("div");
+        ingredientsContainer.classList.add("ingredients-container");
         const labelIngredients = document.createElement("label");
+        labelIngredients.textContent = "Ingredients"
+        labelIngredients.classList.add("label-ingredients");
 
-        ingredientsContainer.appendChild(labelIngredients);
 
         ingredients.forEach(element => {
             const ingredientContainer = document.createElement("div")
+            ingredientContainer.classList.add("ingredient-container");
 
             const ingredientName = document.createElement("p")
             ingredientName.textContent = element.ingredient;
+            ingredientName.classList.add("ingredient");
 
             const ingredientQuantity = document.createElement("p")
-            ingredientQuantity.textContent = element.quantity + element.unit;
+            if (element.quantity === undefined) {
+                ingredientQuantity.textContent = "-";
+            }
+            else {
+                if (element.unit === undefined) {
+                  ingredientQuantity.textContent = `${element.quantity}`;
+                } else {
+                  ingredientQuantity.textContent = `${element.quantity} ${element.unit}`;
+                }
+            }
+            ingredientQuantity.classList.add("quantity");
 
             ingredientContainer.appendChild(ingredientName);
             ingredientContainer.appendChild(ingredientQuantity);
@@ -45,6 +65,7 @@ function cardTemplate(data) {
         textContainer.appendChild(title);
         textContainer.appendChild(labelRecipe);
         textContainer.appendChild(textRecipe);
+        textContainer.appendChild(labelIngredients);
         textContainer.appendChild(ingredientsContainer);
         imgContainer.appendChild(img);
         article.appendChild(timeRecipe);

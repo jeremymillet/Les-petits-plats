@@ -78,6 +78,15 @@ header{
     background-color: black;
     border: none;
 }
+.search-button:hover {
+background-color: #FFD15B;
+}
+.search-button:hover svg circle {
+    stroke: black;
+}
+.search-button:hover svg line {
+    stroke: black;
+}
 .search-button img{
     width: 27px;
 }
@@ -87,8 +96,91 @@ main{
     background: #EDEDED;
 }
 /*     section filtre     */
-
-
+.nb-recipes-container {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    height: 56px;
+}
+.nb-recipes{
+    font-size: 21px;
+    font-weight: 400;
+    font-family: 'Anton', sans-serif;
+}
 
 /*     section cards     */
+.cards-container{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 55px;
+}
 
+.card{
+    width: 380px;
+    margin-bottom: 66px;
+    border-radius: 11px;
+}
+.card-time{
+    position: absolute;
+    right: 22px;
+    top: 21px;
+    width: 80px;
+    text-align: center;
+    background-color: #FFD15B;
+    border-radius: 14px;
+    padding: 5px 15px;
+}
+.card-image-container{
+    height: 253px;
+}
+
+.card-image-container img {
+    width: 100%;
+    max-height:253px;
+    border-top-right-radius: 11px;
+    border-top-left-radius: 11px;
+    object-fit: cover;
+}
+.card-text-container{
+    padding: 32px 25px 61px 25px;
+}
+.card-text-container h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    margin-bottom: 29px;
+}
+.label-recipe,.label-ingredients{
+    font-size: 12px;
+    margin-bottom: 15px;
+    color: #7A7A7A;
+    font-weight: 700;
+}
+.recipe-description{
+    font-size: 14px;
+    margin-bottom: 32px;
+    max-height: 85px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: wrap;
+}
+.ingredients-container{
+    display:flex;
+    height: 190px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.ingredient-container {
+    width: 50%;
+    margin-bottom: 21px;
+}
+.ingredient{
+    font-size: 14px;
+    font-weight: 500;
+}
+.quantity{
+    font-size: 14px;
+    font-weight: 400;
+    color:#7A7A7A;
+}
