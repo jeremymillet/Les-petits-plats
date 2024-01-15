@@ -1,25 +1,24 @@
 function filterTemplate(data) {
-  const {
-    id,
-    name,
-    servings,
-    time,
-    description,
-    appliance,
-    ingredients,
-    ustensils,
-    image,
-  } = data;
-  const picture = `./assets/images/${image}`;
 
-    function getFilterIngredientsDom() { 
-        
-    }
-    function getFilterAppareilsDom() {
+  function getFilterIngredientsDom() { 
+    const filterContainer = document.createElement('div');
+    filterContainer.classList.add("not-visible");
+    const filter = document.createElement('p');
+    filter.textContent = data
 
-    }
-    function getFilterUstensilesDom() {
+    filterContainer.appendChild(filter);
 
-    }
-    
+    return filterContainer;
+  }
+  function filterContainerDom() {
+
+  }
+  function getFilterUstensilesDom() {
+
+  }
+  return {
+    getFilterIngredientsDom,
+    filterContainerDom,
+    getFilterUstensilesDom,
+  };
 }

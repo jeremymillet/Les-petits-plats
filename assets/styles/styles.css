@@ -96,10 +96,17 @@ main{
     background: #EDEDED;
 }
 /*     section filtre     */
-.nb-recipes-container {
+.section-filters{
+    margin-top: 17px;
     display: flex;
     align-items: center;
-    margin-top: 15px;
+    justify-content: space-between;
+}
+.nb-recipes-container {
+    display: flex;
+    justify-content: flex-end;
+    width: 40%;
+    align-items: center;
     height: 56px;
 }
 .nb-recipes{
@@ -107,6 +114,43 @@ main{
     font-weight: 400;
     font-family: 'Anton', sans-serif;
 }
+.filters-container{
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+}
+.filter-container{
+    width:195px;
+    height: 56px;
+    border-radius:11px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+}
+.filter-name{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.not-visible{
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /*     section cards     */
 .cards-container{
@@ -125,7 +169,7 @@ main{
     position: absolute;
     right: 22px;
     top: 21px;
-    width: 80px;
+    width: 83px;
     text-align: center;
     background-color: #FFD15B;
     border-radius: 14px;
@@ -163,7 +207,9 @@ main{
     max-height: 85px;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: wrap;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
 }
 .ingredients-container{
     display:flex;

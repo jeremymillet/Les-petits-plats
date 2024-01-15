@@ -4,7 +4,6 @@ function cardTemplate(data) {
     const picture = `./assets/images/${image}`;
 
     function getCardDom() {
-        const cardsContainer = document.querySelector(".cards-container");
         const article = document.createElement("article");
         article.classList.add("card");
         const imgContainer = document.createElement("div");
@@ -49,11 +48,7 @@ function cardTemplate(data) {
                 ingredientQuantity.textContent = "-";
             }
             else {
-                if (element.unit === undefined) {
-                  ingredientQuantity.textContent = `${element.quantity}`;
-                } else {
-                  ingredientQuantity.textContent = `${element.quantity} ${element.unit}`;
-                }
+                ingredientQuantity.textContent = `${element.quantity} ${element.unit === undefined ? "" : element.unit}`;
             }
             ingredientQuantity.classList.add("quantity");
 
