@@ -1,4 +1,5 @@
 import { recipes } from '../../data/recipes.js'
+import filter from '../utils/filter.js'
 
 function displayMedia(recipes) {
   const cardsContainer = document.querySelector(".cards-container");
@@ -8,17 +9,17 @@ function displayMedia(recipes) {
     cardsContainer.appendChild(cardDom);
   });
 }
-function displayIngredientsFilters(ingredients) {
+function displayIngredientsFilters(tableau,name,where) {
   const filterIngredientsContainer = document.querySelector(
-    "#option-ingredients-container"
+    `#option-${where}-container`
   );
-  ingredients.forEach((ingredient) => {
+  tableau.forEach((ingredient) => {
     const filterModel = filterTemplate(ingredient);
-    const filterDom = filterModel.getFilterIngredientsDom();
+    const functionName = `getFilter${name}Dom`;
+    const filterDom = filterModel[functionName]();
     filterIngredientsContainer.appendChild(filterDom);
   });
 }
-
 
 async function displayNbRecipes(recipes) {
   const nbRecipes = document.querySelector(".nb-recipes")
@@ -78,10 +79,11 @@ async function init() {
   const ustensils = sortNameUstensiles(recipes);
   const ingredients = sortNameIngredients(recipes);
   const appliance = sortNameAppareils(recipes);
-  displayIngredientsFilters(ingredients);
-  console.log(ustensils);
-  console.log(ingredients);
-  console.log(appliance);
+  displayIngredientsFilters(ingredients, "Ingredients", "ingredients");
+  displayIngredientsFilters(appliance, "Appareils", "appareils");
+  displayIngredientsFilters(ustensils, "Ustensiles", "ustensiles");
+  filter();
+  
 }
 
 init();

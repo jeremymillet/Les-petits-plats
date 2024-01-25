@@ -114,43 +114,106 @@ main{
     font-weight: 400;
     font-family: 'Anton', sans-serif;
 }
+
 .filters-container{
     display: flex;
     width: 60%;
     justify-content: space-between;
 }
+
 .filter-container{
-    width:195px;
-    height: 56px;
-    border-radius:11px;
+    width: 195px;
+    height:56px;
+    border-radius: 11px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     background-color: white;
 }
 .filter-name{
+    margin:0px 20px;
+    height: 56px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
 }
-.not-visible{
+.filter-name p {
+    font-size: 16px;
+    font-weight: 500;
+}
+.filter-search-container{
+    display: flex;
+    align-items: center;
+    padding: 9px;
+    margin: 0px 20px;
+    margin-bottom: 11px;
+    width: 163px;
+    height: 36px;
+    border: solid 1px #C6C6C6;
+    border-radius: 2px;
+}
+.filter-search-container svg{
+    width: 13px;
+}
+.filter-search-container input {
+    width: 130px;
+    border: none;
+}
+#option-ingredients-container,#option-appareils-container,#option-ustensiles-container{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    overflow-y: scroll;
+    max-height: 250px;
+    
+}
+.unselected-filter-card{
+    display: none;
+}
+.filter-card{
+    display: flex;
+    justify-content: space-between;
+    order: 2;
+    padding: 0px 20px;
+}
+.filter-card p {
+    padding: 9px 0px 9px 0px;
+    font-size: 14px;
+    font-weight: 400;
+}
+.filter-card.active{
+    background-color: #FFD15B;
+    order: 1;
+}
+.filter-card.active:hover p {
+    font-size: 14px;
+    font-weight: 700;
+}
+.filter-card.active:hover .unselected-filter-card  {
+    display: flex;
+}
+.filter-container .not-visible {
     display: none;
 }
 
+.filter-container.active {
+    height: fit-content;
+    position: relative;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+.filter-container.active .not-visible {
+    display: flex;
+    z-index: 2;
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+    width: 100%;
+    top: 56px;
+    border-bottom-left-radius: 11px;
+    border-bottom-right-radius:11px;
+    
+}
 
 /*     section cards     */
 .cards-container{
