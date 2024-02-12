@@ -53,6 +53,10 @@ header{
     display: flex;
     justify-content: center;
 }
+.search-input .close {
+    position: relative;
+    left: -80px;
+}
 .search-input{
     width: 954px;
     height: 72px;
@@ -68,7 +72,7 @@ header{
 }
 .search-button{
     position: relative;
-    left: -61px;
+    left: -70px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -140,23 +144,46 @@ main{
     font-size: 16px;
     font-weight: 500;
 }
-.filter-search-container{
+.filter-search-container-ingredients,.filter-search-container-appareils,.filter-search-container-ustensiles{
     display: flex;
     align-items: center;
-    padding: 9px;
-    margin: 0px 20px;
+    padding: 0px;
+    margin: 0px 15px;
     margin-bottom: 11px;
     width: 163px;
     height: 36px;
     border: solid 1px #C6C6C6;
     border-radius: 2px;
 }
-.filter-search-container svg{
-    width: 13px;
+.filter-search-container-ingredients .svg-search,
+.filter-search-container-appareils .svg-search,
+.filter-search-container-ustensiles .svg-search{
+    padding-right: 10px;
+    width: 24px;
 }
-.filter-search-container input {
+.filter-search-container-ingredients .delete-value,
+.filter-search-container-appareils .delete-value,
+.filter-search-container-ustensiles .delete-value {
+    display: none;
+    position: relative;
+    left: -4px;
+    width: 6px;
+}
+.filter-search-container-ingredients .delete-value path,
+.filter-search-container-appareils .delete-value path,
+.filter-search-container-ustensiles .delete-value path{
+    stroke: #7A7A7A;
+}
+.filter-search-container-ingredients input,
+.filter-search-container-appareils input,
+.filter-search-container-ustensiles input {
     width: 130px;
     border: none;
+}
+.filter-search-container-ingredients input:focus,
+.filter-search-container-appareils input:focus,
+.filter-search-container-ustensiles input:focus {
+    outline: none;
 }
 #option-ingredients-container,#option-appareils-container,#option-ustensiles-container{
     display: flex;
@@ -191,6 +218,10 @@ main{
 .filter-card.active:hover .unselected-filter-card  {
     display: flex;
 }
+.filter-container img{
+    transform: rotate(0deg);
+    transition: all 0.3s ease-out;
+}
 .filter-container .not-visible {
     display: none;
 }
@@ -200,6 +231,10 @@ main{
     position: relative;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
+}
+.filter-container.active img {
+    transform: rotate(180deg);
+    transition: all 0.3s ease-out;
 }
 
 .filter-container.active .not-visible {
@@ -213,6 +248,25 @@ main{
     border-bottom-left-radius: 11px;
     border-bottom-right-radius:11px;
     
+}
+.active-filter{
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 21px;
+    width: 100%;
+}
+.active-filter div {
+    display: flex;
+    justify-content: space-between;
+    background-color: #FFD15B;
+    gap: 60px;
+    border-radius: 10px;
+    margin-right: 25px;
+    padding: 17px 18px;
+
+}
+.active-filter div p {
+    font-size: 14px;
 }
 
 /*     section cards     */
