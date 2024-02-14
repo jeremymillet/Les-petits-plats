@@ -6,12 +6,14 @@ import {
   sortNameAppareils,
   sortNameUstensiles,
   displayNbRecipes,
+  triRecipesFromDom,
 } from "../utils/helpers.js";
 import { recipes } from "../../data/recipes.js";
 
-const ustensils = sortNameUstensiles(recipes);
-const ingredients = sortNameIngredients(recipes);
-const appliance = sortNameAppareils(recipes);
+ const recipesFromDom = triRecipesFromDom(recipes);
+ const ustensils = sortNameUstensiles(recipesFromDom);
+ const ingredients = sortNameIngredients(recipesFromDom);
+ const appliance = sortNameAppareils(recipesFromDom);
 
 function filters() {
   

@@ -1,8 +1,29 @@
+
 export async function displayNbRecipes(recipes) {
   const nbRecipes = document.querySelector(".nb-recipes");
   nbRecipes.innerText = recipes.length + " recettes";
 }
-
+export function displayMedia(recipes) {
+  const cardsContainer = document.querySelector(".cards-container");
+  cardsContainer.innerHTML = "";
+  recipes.forEach((recipe) => {
+    const mediaModel = cardTemplate(recipe);
+    const cardDom = mediaModel.getCardDom();
+    cardsContainer.appendChild(cardDom);
+  });
+}
+export function triRecipesFromDom(recipes) {
+  const allName = document.querySelectorAll(".card-text-container h3");
+  var newTabRecipes = [];
+  recipes.forEach((recipe) => {
+    allName.forEach((name) => {
+      if (recipe.name === name.innerText) {
+        newTabRecipes.push(recipe);
+      }
+    });
+  });
+  return newTabRecipes;
+}
 export function displayIngredientsFilters(tableau, where) {
   const filterIngredientsContainer = document.querySelector(
     `#option-${where}-container`
