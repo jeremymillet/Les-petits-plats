@@ -28,6 +28,7 @@ export function displayIngredientsFilters(tableau, where) {
     const filterDom = filterModel.getFilterDom(where);
     filterIngredientsContainer.appendChild(filterDom);
   });
+  event();
 }
 
 export function sortNameIngredients(recipes) {
@@ -107,7 +108,6 @@ export function event() {
   });
 }
 export function searchByTag(recipes) {
-  console.log("test")
   const allTags = document.querySelectorAll(".active-filter div");
   const ingredients = [];
   const ustensiles = [];
