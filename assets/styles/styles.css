@@ -56,6 +56,10 @@ header{
 .search-input .close {
     position: relative;
     left: -80px;
+    display: none;
+}
+.search-input .close.visible {
+    display: flex;
 }
 .search-input{
     width: 954px;
@@ -347,3 +351,4 @@ main{
     font-weight: 400;
     color:#7A7A7A;
 }
+

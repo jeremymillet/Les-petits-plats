@@ -7,7 +7,6 @@ import {
   sortNameUstensiles,
   displayNbRecipes,
   displayMedia,
-  triRecipesFromDom,
 } from "../utils/helpers.js";
 
 
@@ -21,10 +20,9 @@ async function init() {
   // Récupère les datas des photographes
   displayData(recipes);
   displayNbRecipes(recipes);
-  const recipesFromDom = triRecipesFromDom(recipes);
-  const ustensils = sortNameUstensiles(recipesFromDom);
-  const ingredients = sortNameIngredients(recipesFromDom);
-  const appliance = sortNameAppareils(recipesFromDom);
+  const ustensils = sortNameUstensiles(recipes);
+  const ingredients = sortNameIngredients(recipes);
+  const appliance = sortNameAppareils(recipes);
   displayIngredientsFilters(ingredients, "ingredients");
   displayIngredientsFilters(appliance, "appareils");
   displayIngredientsFilters(ustensils, "ustensiles");

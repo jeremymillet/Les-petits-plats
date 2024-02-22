@@ -1,3 +1,4 @@
+import { recipes } from "../../data/recipes.js";
 
 export async function displayNbRecipes(recipes) {
   const nbRecipes = document.querySelector(".nb-recipes");
@@ -12,18 +13,20 @@ export function displayMedia(recipes) {
     cardsContainer.appendChild(cardDom);
   });
 }
-export function triRecipesFromDom(recipes) {
-  const allName = document.querySelectorAll(".card-text-container h3");
-  var newTabRecipes = [];
+
+export function getRecipesByDom(recipes) {
+  var newRecipes = [];
   recipes.forEach((recipe) => {
-    allName.forEach((name) => {
-      if (recipe.name === name.innerText) {
-        newTabRecipes.push(recipe);
+    const RecipesFromDom = document.querySelectorAll(".cards-text-container h3");
+    RecipesFromDom.forEach((recipeDom) => {
+      if (recipeDom === recipe.title) {
+        newRecipes.push(recipe);
+        console.log(newRecipes)
       }
-    });
-  });
-  return newTabRecipes;
+    })
+  })
 }
+
 export function displayIngredientsFilters(tableau, where) {
   const filterIngredientsContainer = document.querySelector(
     `#option-${where}-container`
@@ -66,10 +69,10 @@ export function sortNameAppareils(recipes) {
   });
   return allApplianceNames;
 }
-export function sortNameUstensiles(recipes) {
+export function sortNameUstensiles(data) {
   const allUstensilNames = [];
   // Boucle à travers chaque recette
-  recipes.forEach((recipe) => {
+  data.forEach((recipe) => {
     // Boucle à travers chaque ustensile de la recette
     recipe.ustensils.forEach((ustensil) => {
       // Vérifier si le nom de l'ustensile est déjà dans le tableau
