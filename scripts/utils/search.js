@@ -1,11 +1,11 @@
 import {
-  displayIngredientsFilters,
+  displayDropdownFilters,
   sortNameIngredients,
   sortNameAppareils,
   sortNameUstensiles,
   displayNbRecipes,
   displayMedia,
-  event,
+  refreshDropdownEvent,
   searchByTag,
 } from "./helpers.js";
 import { recipes } from "../../data/recipes.js";
@@ -67,9 +67,9 @@ tarte aux pommes », « poisson » `;
         return acc;
       }, []);
       uniqueRecipes.sort((a, b) => a.id - b.id);
-      searchByTag(newRecipes);
-      refreshDisplay(newRecipes);
-      event();
+      searchByTag(uniqueRecipes);
+      refreshDisplay(uniqueRecipes);
+      refreshDropdownEvent();
     }
   } else {
     alert("vous devez rentrer au moins 3 caractères");
@@ -81,9 +81,9 @@ export function refreshDisplay(newRecipes) {
   const ustensils = sortNameUstensiles(newRecipes);
   const ingredients = sortNameIngredients(newRecipes);
   const appliance = sortNameAppareils(newRecipes);
-  displayIngredientsFilters(ingredients, "ingredients");
-  displayIngredientsFilters(appliance, "appareils");
-  displayIngredientsFilters(ustensils, "ustensiles");
+  displayDropdownFilters(ingredients, "ingredients");
+  displayDropdownFilters(appliance, "appareils");
+ displayDropdownFilters(ustensils, "ustensiles");
 }
 
 input.addEventListener("input", (e) => { 
@@ -101,7 +101,7 @@ deleteBtn.addEventListener("click", () => {
   newRecipes = [...recipes];
   searchByTag(newRecipes);
   refreshDisplay(newRecipes);
-  event()
+  refreshDropdownEvent();
   deleteBtn.classList.remove("visible");
 });
 

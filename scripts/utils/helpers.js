@@ -15,7 +15,7 @@ export function displayMedia(recipes) {
   });
 }
 
-export function displayIngredientsFilters(tableau, where) {
+export function displayDropdownFilters(tableau, where) {
   const filterIngredientsContainer = document.querySelector(
     `#option-${where}-container`
     );
@@ -28,7 +28,7 @@ export function displayIngredientsFilters(tableau, where) {
     const filterDom = filterModel.getFilterDom(where);
     filterIngredientsContainer.appendChild(filterDom);
   });
-  event();
+  refreshDropdownEvent();
 }
 
 export function sortNameIngredients(recipes) {
@@ -73,7 +73,8 @@ export function sortNameUstensiles(data) {
   });
   return allUstensilNames;
 }
-export function event() {
+
+export function refreshDropdownEvent() {
   const dropDownBtn = document.querySelectorAll(".filter-card");
   dropDownBtn.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -83,8 +84,17 @@ export function event() {
   const unselectedBtn = document.querySelectorAll(".unselected-filter-card");
   unselectedBtn.forEach((btn) => {
     btn.addEventListener("click", () => {
-      hundleInput();
-      searchByTag(recipes);
+      const allTags = document.querySelectorAll(".active-filter div");
+      if (allTags.length > 0) {
+        searchByTag(recipes);
+      } else {
+        const inputValue = getInputValue();
+        if (inputValue.length > 0) {
+          hundleInput();
+        } else {
+          searchByTag(recipes);
+        }
+      }
     });
   });
   const unselectedBtnTags = document.querySelectorAll(".active-filter div img");
@@ -95,12 +105,10 @@ export function event() {
         searchByTag(recipes);
       }
       else {
-        const test = getInputValue();
-        console.log(test.length);
-        if (test.length > 0) { 
+        const inputValue = getInputValue();
+        if (inputValue.length > 0) {
           hundleInput();
-        }
-        else {
+        } else {
           searchByTag(recipes);
         }
       }
@@ -108,12 +116,15 @@ export function event() {
   });
 }
 export function searchByTag(recipes) {
+  // Sélectionne tous les tags actifs dans le filtre
   const allTags = document.querySelectorAll(".active-filter div");
+  // Initialise trois tableaux pour stocker les tags correspondant à chaque catégorie
   const ingredients = [];
   const ustensiles = [];
   const appareils = [];
-
+  // Parcourt chaque tag actif
   allTags.forEach((tag) => {
+    // Vérifie la classe du tag et l'ajoute au tableau correspondant
     if (tag.classList.contains("ingredients")) {
       ingredients.push(tag.innerText.toLowerCase());
     } else if (tag.classList.contains("ustensiles")) {
@@ -122,8 +133,9 @@ export function searchByTag(recipes) {
       appareils.push(tag.innerText.toLowerCase());
     }
   });
-
+  // Filtre les recettes en fonction des tags sélectionnés
   const filteredRecipes = recipes.filter((recipe) => {
+    // Vérifie si chaque ingrédient sélectionné est présent dans la recette
     const hasSelectedIngredients =
       ingredients.length === 0 ||
       ingredients.every((ingredient) => {
@@ -132,6 +144,7 @@ export function searchByTag(recipes) {
         );
       });
 
+    // Vérifie si chaque ustensile sélectionné est présent dans la recette
     const hasSelectedUstensiles =
       ustensiles.length === 0 ||
       ustensiles.every((ustensil) => {
@@ -140,24 +153,23 @@ export function searchByTag(recipes) {
         );
       });
 
+    // Vérifie si l'appareil sélectionné est celui de la recette
     const hasSelectedAppareils =
       appareils.length === 0 ||
       appareils.every((appareil) => {
         return recipe.appliance.toLowerCase() === appareil.toLowerCase();
       });
 
+    // Retourne true si la recette satisfait tous les critères de filtre
     return (
       hasSelectedIngredients && hasSelectedUstensiles && hasSelectedAppareils
     );
   });
-
   // Remplace le contenu de 'newRecipes' par les nouvelles recettes filtrées
   newRecipes.splice(0, newRecipes.length, ...filteredRecipes);
-
   // Mettre en place le tri si nécessaire
-  setupSort();
-  event();
-  console.log(newRecipes);
+  setupSort(); 
+  refreshDropdownEvent();
 }
 export function setupSort() {
   const uniqueRecipes = newRecipes.reduce((acc, curr) => {
@@ -167,6 +179,6 @@ export function setupSort() {
     return acc;
   }, []);
   uniqueRecipes.sort((a, b) => a.id - b.id);
-  refreshDisplay(newRecipes);
+  refreshDisplay(uniqueRecipes);
 }
 

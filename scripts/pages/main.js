@@ -1,7 +1,7 @@
 import { recipes } from '../../data/recipes.js'
 import filters from '../utils/filters.js'
 import {
-  displayIngredientsFilters,
+  displayDropdownFilters,
   sortNameIngredients,
   sortNameAppareils,
   sortNameUstensiles,
@@ -23,9 +23,9 @@ async function init() {
   const ustensils = sortNameUstensiles(recipes);
   const ingredients = sortNameIngredients(recipes);
   const appliance = sortNameAppareils(recipes);
-  displayIngredientsFilters(ingredients, "ingredients");
-  displayIngredientsFilters(appliance, "appareils");
-  displayIngredientsFilters(ustensils, "ustensiles");
+  displayDropdownFilters(ingredients, "ingredients");
+  displayDropdownFilters(appliance, "appareils");
+  displayDropdownFilters(ustensils, "ustensiles");
   filters();
   
 }

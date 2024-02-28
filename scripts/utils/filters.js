@@ -1,7 +1,7 @@
 
 
 import {
-  displayIngredientsFilters,
+  displayDropdownFilters,
   sortNameIngredients,
   sortNameAppareils,
   sortNameUstensiles,
@@ -41,9 +41,9 @@ function filters() {
         const filteredWords = data.filter((word) => {
           return word.toLowerCase().includes(inputValue);
         });
-        displayIngredientsFilters(filteredWords, category);
+        displayDropdownFilters(filteredWords, category);
       } else {
-        displayIngredientsFilters(data, category);
+        displayDropdownFilters(data, category);
       }
     });
   }

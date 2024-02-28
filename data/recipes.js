@@ -3,7 +3,7 @@ export const recipes = [
         "id": 1,
         "image": "Recette01.jpg",
         "name" : "Limonade de Coco",
-        "servings" : 1,
+        "servings": 1,
         "ingredients": [
             {
                 "ingredient" : "Lait de coco",
