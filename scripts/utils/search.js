@@ -11,6 +11,7 @@ import {
 import { recipes } from "../../data/recipes.js";
 
 export let newRecipes = [...recipes];
+
 const input = document.querySelector(".search-input input");
 const searchBtn = document.querySelector(".search-button");
 const deleteBtn = document.querySelector(".search-input .close");
@@ -21,18 +22,64 @@ export function getInputValue() {
 }
 
 function searchByDescription(value, recipes) {
-  
+  for (let i = 0; i < recipes.length; i++) {
+    const recipe = recipes[i];
+    const descriptionWords = recipe.description.toLowerCase().split(" ");
+    if (descriptionWords.includes(value.toLowerCase())) {
+      newRecipes.push(recipe);
+    }
+  }
 }
-function searchByIngredient(value, recipes) {
 
+function searchByIngredient(value, recipes) {
+  for (let i = 0; i < recipes.length; i++) {
+    const recipe = recipes[i];
+    for (let j = 0; j < recipe.ingredients.length; j++) {
+      const ingredient = recipe.ingredients[j];
+      if (ingredient.ingredient.toLowerCase() === value) {
+        newRecipes.push(recipe);
+      }
+    }
+  }
 }
+
 function searchByName(value, recipes) {
- 
+  for (let i = 0; i < recipes.length; i++) {
+    const recipe = recipes[i];
+    if (recipe.name.toLowerCase().includes(value.toLowerCase())) {
+      newRecipes.push(recipe);
+    }
+  }
 }
+
 export function hundleInput() {
   newRecipes = [];
   const value = getInputValue();
-  
+  if (value.length >= 3) {
+    searchByName(value, recipes);
+    searchByIngredient(value, recipes);
+    searchByDescription(value, recipes);
+
+    if (newRecipes.length === 0) {
+      displayNbRecipes(newRecipes);
+      const cardsContainer = document.querySelector(".cards-container");
+      cardsContainer.innerHTML = "";
+      cardsContainer.innerHTML = `Aucune recette ne contient ${value}. Vous pouvez chercher « tarte aux pommes », « poisson » `;
+    } else {
+      const uniqueRecipes = Object.values(newRecipes).reduce((acc, curr) => {
+        if (!acc.some((recipe) => recipe.id === curr.id)) {
+          acc.push(curr);
+        }
+        return acc;
+      }, []);
+        uniqueRecipes.sort((a, b) => a.id - b.id);
+        console.log(uniqueRecipes);
+      searchByTag(uniqueRecipes);
+      refreshDropdownEvent();
+    }
+  } else {
+    alert("Vous devez rentrer au moins 3 caractères.");
+  }
 }
 export function refreshDisplay(newRecipes) {
   displayMedia(newRecipes);

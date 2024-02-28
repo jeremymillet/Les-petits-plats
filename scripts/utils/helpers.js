@@ -163,7 +163,6 @@ export function searchByTag(recipes) {
       appareils.every((appareil) => {
         return recipe.appliance.toLowerCase() === appareil.toLowerCase();
       });
-
     // Retourne true si la recette satisfait tous les critères de filtre
     return (
       hasSelectedIngredients && hasSelectedUstensiles && hasSelectedAppareils
