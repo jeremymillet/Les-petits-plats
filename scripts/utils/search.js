@@ -66,14 +66,14 @@ export function hundleInput() {
       cardsContainer.innerHTML = "";
       cardsContainer.innerHTML = `Aucune recette ne contient ${value}. Vous pouvez chercher « tarte aux pommes », « poisson » `;
     } else {
-      const uniqueRecipes = Object.values(newRecipes).reduce((acc, curr) => {
-        if (!acc.some((recipe) => recipe.id === curr.id)) {
-          acc.push(curr);
+      const uniqueRecipes = [];
+      const newReccipesValues = Object.values(newRecipes);
+      for (let i = 0; i < newReccipesValues.length; i++){
+        if (!uniqueRecipes.some((recipe) => recipe.id === newReccipesValues[i].id)) {
+          uniqueRecipes.push(newReccipesValues[i]);
         }
-        return acc;
-      }, []);
-        uniqueRecipes.sort((a, b) => a.id - b.id);
-        console.log(uniqueRecipes);
+      }
+      uniqueRecipes.sort((a, b) => a.id - b.id);
       searchByTag(uniqueRecipes);
       refreshDropdownEvent();
     }
