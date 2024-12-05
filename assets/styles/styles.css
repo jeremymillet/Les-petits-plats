@@ -54,8 +54,12 @@ header{
     justify-content: center;
 }
 .search-input .close {
+    display: none;
+}
+.search-input .close.visible {
     position: relative;
     left: -80px;
+    display: flex;
 }
 .search-input{
     width: 954px;
