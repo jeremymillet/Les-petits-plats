@@ -14,7 +14,6 @@ async function displayData(recipes) {
 }
 
 async function init() {
-  // Récupère les datas des photographes
   displayData(recipes);
   displayNbRecipes(recipes);
   const ustensils = sortNameUstensiles(recipes);
