@@ -1,4 +1,4 @@
-import { recipes } from "../../data/recipes.js";
+import { recipes } from "../../data/recipes-min.js";
 import filters from "../utils/filters.js";
 import {
   displayDropdownFilters,

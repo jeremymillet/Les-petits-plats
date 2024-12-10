@@ -4,9 +4,9 @@ import {
   sortNameAppareils,
   sortNameUstensiles,
   searchByTag,
-} from "../utils/helpers.js";
+} from "../utils/helpers-min.js";
 
-import { newRecipes } from "./search.js";
+import { newRecipes } from "./search-min.js";
 
 function filters() {
   const dropDownBtn = document.querySelectorAll(".filter-card");
