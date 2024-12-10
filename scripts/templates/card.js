@@ -15,7 +15,8 @@ function cardTemplate(data) {
         timeRecipe.textContent = time + "min";
 
         const img = document.createElement("img");
-        img.setAttribute("src",picture)
+        img.setAttribute("src", picture)
+        img.setAttribute("alt","cover recipes")
 
         const title = document.createElement("h3");
         title.textContent = name
