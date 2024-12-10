@@ -250,14 +250,15 @@ main {
 .filter-card.active {
   background-color: #ffd15b;
   order: 1;
+  gap:20px;
 }
 
-.filter-card.active:hover p {
+.filter-card.active p {
   font-size: 14px;
   font-weight: 700;
 }
 
-.filter-card.active:hover .unselected-filter-card {
+.filter-card.active .unselected-filter-card {
   display: flex;
 }
 
