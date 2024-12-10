@@ -443,7 +443,6 @@ main {
     width: 100%;
     height: 50px
   }
-
   .search-input input {
     height: 50px;
     padding-left: 20px;
@@ -493,6 +492,14 @@ main {
     height: 30px;
     border: solid 1px #c6c6c6;
     border-radius: 2px;
+  }
+  .filter-search-container-ingredients input,
+  .filter-search-container-appareils input,
+  .filter-search-container-ustensiles input {
+    width: 80%;
+    height: auto;
+    border: none;
+    font-size: 12px;
   }
   .filter-card p{
     font-size: 12px;
