@@ -9,6 +9,8 @@ import {
 export async function displayNbRecipes(recipes) {
   const nbRecipes = document.querySelector(".nb-recipes");
   nbRecipes.innerText = recipes.length + " recettes";
+  const nbRecipesHeader = document.querySelector(".header-title");
+  nbRecipesHeader.innerText = "CHERCHEZ PARMI PLUS DE "+recipes.length +" RECETTES DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES";
 }
 export function displayMedia(recipes) {
   const cardsContainer = document.querySelector(".cards-container");
