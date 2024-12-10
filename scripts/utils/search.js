@@ -7,7 +7,7 @@ import {
   displayMedia,
   refreshDropdownEvent,
   searchByTag,
-} from "./helpers.js";
+} from "./helpers-min.js";
 import { recipes } from "../../data/recipes-min.js";
 
 export let newRecipes = [...recipes];
