@@ -134,13 +134,13 @@ export function setupSort() {
 export function searchByTag(recipes) {
   // Sélectionne tous les tags actifs dans le filtre
   const allTags = document.querySelectorAll(".active-filter div");
-  // Initialise trois tableaux pour stocker les tags correspondant à chaque catégorie
+  console.log("Tags actifs :", allTags);
+
   const ingredients = [];
   const ustensiles = [];
   const appareils = [];
-  // Parcourt chaque tag actif
+
   allTags.forEach((tag) => {
-    // Vérifie la classe du tag et l'ajoute au tableau correspondant
     if (tag.classList.contains("ingredients")) {
       ingredients.push(tag.innerText.toLowerCase());
     } else if (tag.classList.contains("ustensiles")) {
@@ -149,9 +149,11 @@ export function searchByTag(recipes) {
       appareils.push(tag.innerText.toLowerCase());
     }
   });
-  // Filtre les recettes en fonction des tags sélectionnés
+  console.log("Ingrédients sélectionnés :", ingredients);
+  console.log("Ustensiles sélectionnés :", ustensiles);
+  console.log("Appareils sélectionnés :", appareils);
+
   const filteredRecipes = recipes.filter((recipe) => {
-    // Vérifie si chaque ingrédient sélectionné est présent dans la recette
     const hasSelectedIngredients =
       ingredients.length === 0 ||
       ingredients.every((ingredient) => {
@@ -160,7 +162,6 @@ export function searchByTag(recipes) {
         );
       });
 
-    // Vérifie si chaque ustensile sélectionné est présent dans la recette
     const hasSelectedUstensiles =
       ustensiles.length === 0 ||
       ustensiles.every((ustensil) => {
@@ -169,20 +170,22 @@ export function searchByTag(recipes) {
         );
       });
 
-    // Vérifie si l'appareil sélectionné est celui de la recette
     const hasSelectedAppareils =
       appareils.length === 0 ||
       appareils.every((appareil) => {
         return recipe.appliance.toLowerCase() === appareil.toLowerCase();
       });
-    // Retourne true si la recette satisfait tous les critères de filtre
+
     return (
       hasSelectedIngredients && hasSelectedUstensiles && hasSelectedAppareils
     );
   });
-  // Remplace le contenu de 'newRecipes' par les nouvelles recettes filtrées
+
+  console.log("Recettes filtrées :", filteredRecipes);
+
   newRecipes.splice(0, newRecipes.length, ...filteredRecipes);
-  // Mettre en place le tri si nécessaire
+  console.log("newRecipes après mise à jour :", newRecipes);
+
   setupSort();
   refreshDropdownEvent();
 }
