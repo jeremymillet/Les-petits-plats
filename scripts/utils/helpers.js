@@ -121,6 +121,16 @@ export function refreshDropdownEvent() {
     });
   });
 }
+export function setupSort() {
+  const uniqueRecipes = newRecipes.reduce((acc, curr) => {
+    if (!acc.some((recipe) => recipe.id === curr.id)) {
+      acc.push(curr);
+    }
+    return acc;
+  }, []);
+  uniqueRecipes.sort((a, b) => a.id - b.id);
+  refreshDisplay(uniqueRecipes);
+}
 export function searchByTag(recipes) {
   // Sélectionne tous les tags actifs dans le filtre
   const allTags = document.querySelectorAll(".active-filter div");
@@ -176,13 +186,4 @@ export function searchByTag(recipes) {
   setupSort();
   refreshDropdownEvent();
 }
-export function setupSort() {
-  const uniqueRecipes = newRecipes.reduce((acc, curr) => {
-    if (!acc.some((recipe) => recipe.id === curr.id)) {
-      acc.push(curr);
-    }
-    return acc;
-  }, []);
-  uniqueRecipes.sort((a, b) => a.id - b.id);
-  refreshDisplay(uniqueRecipes);
-}
+
