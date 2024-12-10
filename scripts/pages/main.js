@@ -1,5 +1,5 @@
 import { recipes } from "../../data/recipes-min.js";
-import filters from "../utils/filters.js";
+import filters from "../utils/filters-min.js";
 import {
   displayDropdownFilters,
   sortNameIngredients,
@@ -7,7 +7,7 @@ import {
   sortNameUstensiles,
   displayNbRecipes,
   displayMedia,
-} from "../utils/helpers.js";
+} from "../utils/helpers-min.js";
 
 async function displayData(recipes) {
   displayMedia(recipes);
