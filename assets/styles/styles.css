@@ -66,7 +66,7 @@ header {
 
 .search-input .close.visible {
   position: absolute;
-  right: 0px;
+  right: 80px;
   display: flex;
 }
 
@@ -254,8 +254,8 @@ main {
 }
 
 .filter-card.active p {
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 .filter-card.active .unselected-filter-card {
@@ -549,5 +549,11 @@ main {
   }
   .quantity{
     font-size: 10px;
+  }
+  .search-input .close.visible {
+    position: absolute;
+    right: 60px;
+    display: flex;
+    width: 12px;
   }
 }
