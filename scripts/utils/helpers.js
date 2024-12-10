@@ -4,7 +4,7 @@ import {
   refreshDisplay,
   hundleInput,
   getInputValue,
-} from "./search-min.js";
+} from "./search.js";
 
 export async function displayNbRecipes(recipes) {
   const nbRecipes = document.querySelector(".nb-recipes");

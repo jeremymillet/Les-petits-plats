@@ -4,7 +4,7 @@ import {
   sortNameAppareils,
   sortNameUstensiles,
   searchByTag,
-} from "../utils/helpers-min.js";
+} from "../utils/helpers.js";
 
 import { newRecipes } from "./search-min.js";
 
