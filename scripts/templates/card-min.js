@@ -1,5 +1,6 @@
 function cardTemplate(data){const{id,name,servings,time,description,appliance,ingredients,ustensils,image}=data
-const picture=`./assets/images/${image}`;function getCardDom(){const article=document.createElement("article");article.classList.add("card");const imgContainer=document.createElement("div");imgContainer.classList.add("card-image-container");const textContainer=document.createElement("div");textContainer.classList.add("card-text-container");const timeRecipe=document.createElement("p");timeRecipe.classList.add("card-time");timeRecipe.textContent=time+"min";const img=document.createElement("img");img.setAttribute("src",picture)
+    const picture = `./assets/images/${image}`; function getCardDom() {
+        const article = document.createElement("article"); article.classList.add("card"); const imgContainer = document.createElement("div"); imgContainer.classList.add("card-image-container"); const textContainer = document.createElement("div"); textContainer.classList.add("card-text-container"); const timeRecipe = document.createElement("p"); timeRecipe.classList.add("card-time"); timeRecipe.textContent = time + "min"; const img = document.createElement("img"); img.setAttribute("src", picture);img.setAttribute("alt","cover recipes")
 const title=document.createElement("h3");title.textContent=name
 const labelRecipe=document.createElement("label")
 labelRecipe.classList.add("label-recipe")
