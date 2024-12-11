@@ -4,6 +4,9 @@ function cardTemplate(data) {
     const picture = `./assets/images/${image}`;
 
     function getCardDom() {
+        const cardLink = document.createElement("a");
+        cardLink.classList.add("card-link");
+        cardLink.href = `/recipe.html?id=${id}`;
         const article = document.createElement("article");
         article.classList.add("card");
         const imgContainer = document.createElement("div");
@@ -67,8 +70,9 @@ function cardTemplate(data) {
         article.appendChild(timeRecipe);
         article.appendChild(imgContainer)
         article.appendChild(textContainer);
+        cardLink.appendChild(article);
 
-        return (article);
+        return (cardLink);
         
     }
      return {id,name,servings,time,description,appliance,ingredients,ustensils,picture,getCardDom};
