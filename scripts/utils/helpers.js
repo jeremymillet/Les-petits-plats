@@ -142,11 +142,11 @@ export function searchByTag(recipes) {
 
   allTags.forEach((tag) => {
     if (tag.classList.contains("ingredients")) {
-      ingredients.push(tag.innerText.toLowerCase());
+      ingredients.push(tag.textContent.toLowerCase());
     } else if (tag.classList.contains("ustensiles")) {
-      ustensiles.push(tag.innerText.toLowerCase());
+      ustensiles.push(tag.textContent.toLowerCase());
     } else if (tag.classList.contains("appareils")) {
-      appareils.push(tag.innerText.toLowerCase());
+      appareils.push(tag.textContent.toLowerCase());
     }
   });
   console.log("Ingrédients sélectionnés :", ingredients);
