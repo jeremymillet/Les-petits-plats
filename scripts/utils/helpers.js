@@ -134,8 +134,7 @@ export function setupSort() {
 export function searchByTag(recipes) {
   // Sélectionne tous les tags actifs dans le filtre
   const allTags = document.querySelectorAll(".active-filter div");
-  console.log("Tags actifs :", allTags);
-
+  
   const ingredients = [];
   const ustensiles = [];
   const appareils = [];
@@ -149,6 +148,7 @@ export function searchByTag(recipes) {
       appareils.push(tag.textContent.toLowerCase());
     }
   });
+  console.log(recipes);
   console.log("Ingrédients sélectionnés :", ingredients);
   console.log("Ustensiles sélectionnés :", ustensiles);
   console.log("Appareils sélectionnés :", appareils);
